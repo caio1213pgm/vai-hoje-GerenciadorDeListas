@@ -11,17 +11,36 @@ export function DivInput({ children }: divProps) {
 }
 type inputProps = ComponentProps<"input">;
 export function Input({ ...props }: inputProps) {
-  return <input className="w-full outline-0 text-white" {...props} />;
+  return (
+    <input
+      className="w-full outline-0 text-white required:border-4 invalid:border-red-800 invalid:border-4 "
+      {...props}
+    />
+  );
 }
 type divGroupInputProps = {
   children: React.ReactNode;
   title: string;
+  messageError?: string;
 };
-export function DivGroupInput({ children, title }: divGroupInputProps) {
+export function DivGroupInput({
+  children,
+  title,
+  messageError,
+}: divGroupInputProps) {
   return (
     <div>
       <span className="text-gray-400 md:text-xl mb-1 font-medium">{title}</span>
       <DivInput>{children}</DivInput>
+      <ErrosMessage message={messageError} />
     </div>
+  );
+}
+type errorProps = {
+  message?: string;
+};
+function ErrosMessage({ message }: errorProps) {
+  return (
+    <span className="text-red-500 font-medium text-center">{message}</span>
   );
 }
