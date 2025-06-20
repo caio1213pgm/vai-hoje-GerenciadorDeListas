@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import App from "../pages/Home";
 import Login from "../pages/auth/Login";
+import Register from "../pages/auth/Register";
 
 export function AppRoutes() {
   return (
@@ -8,6 +9,7 @@ export function AppRoutes() {
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </BrowserRouter>
   );
