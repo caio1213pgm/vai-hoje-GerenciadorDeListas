@@ -40,7 +40,7 @@ function FormLogin() {
         <ButtonEye type={type} setType={setType} />
       </DivGroupInput>
 
-      <ButtonSubmit />
+      <ButtonSubmit text="Entrar"/>
     </form>
   );
 }

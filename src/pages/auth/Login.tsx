@@ -1,19 +1,17 @@
-import { DivGroupInput, Input } from "../../components/GruopInput";
+import FormLogin from "../../components/FormLogin";
 import Layout from "../../layout/Layout";
+import DivForms from "../../components/DivForms";
 
 function Login() {
   return (
     <Layout>
-      <div>
-        <form className="flex justify-center flex-col items-center">
-            <DivGroupInput title="Email">
-              <Input type="text" />
-            </DivGroupInput>
-            <DivGroupInput title="Senha">
-              <Input type="text" />
-            </DivGroupInput>
-        </form>
-      </div>
+      <DivForms
+        title="Entre com seu email e senha cadastrados!"
+        link="/register"
+        linkText="Não tem conta ainda? Crie agora, é de graça!"
+      >
+        <FormLogin />
+      </DivForms>
     </Layout>
   );
 }
