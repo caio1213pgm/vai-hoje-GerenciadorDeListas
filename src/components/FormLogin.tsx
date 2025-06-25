@@ -5,14 +5,17 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import ButtonEye from "./ButtonEye";
 import ButtonSubmit from "./ButtonSubmit";
+import { useAuth } from "../context/AuthContext";
+
 const schema = z.object({
   email: z.string().email("Email inválido"),
   password: z.string().min(6, "Senha deve ter pelo menos 6 caracteres"),
 });
 
-type FormLoginData = z.infer<typeof schema>;
+export type FormLoginData = z.infer<typeof schema>;
 
 function FormLogin() {
+  const { signInUser } = useAuth();
   const [type, setType] = useState<boolean>(true);
   const {
     register,
@@ -23,7 +26,11 @@ function FormLogin() {
   });
 
   function sendData(data: FormLoginData) {
-    console.log(data);
+    try {
+      signInUser(data);
+    } catch (error) {
+      console.log("Erro ao fazer login:", error);
+    }
   }
 
   return (
@@ -40,7 +47,7 @@ function FormLogin() {
         <ButtonEye type={type} setType={setType} />
       </DivGroupInput>
 
-      <ButtonSubmit text="Entrar"/>
+      <ButtonSubmit text="Entrar" />
     </form>
   );
 }

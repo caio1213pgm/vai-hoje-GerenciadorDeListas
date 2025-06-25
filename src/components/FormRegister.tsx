@@ -5,6 +5,7 @@ import { DivGroupInput, Input } from "./GruopInput";
 import z from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useAuth } from "../context/AuthContext";
 
 const schemaRegister = z.object({
   email: z.string().email("Email inválido"),
@@ -12,26 +13,31 @@ const schemaRegister = z.object({
   confirmPassword: z
     .string()
     .min(6, "Confirmação de senha deve ter pelo menos 6 caracteres"),
+  username: z
+    .string()
+    .min(3, "Nome de usuário deve ter pelo menos 3 caracteres"),
 });
 
-type FormRegisterData = z.infer<typeof schemaRegister>;
+export type FormRegisterData = z.infer<typeof schemaRegister>;
 
 function FormRegister() {
-    const [type, setType] = useState<boolean>(true);
+  const [type, setType] = useState<boolean>(true);
+  const { createNewUser } = useAuth();
 
-     const {
-        register,
-        handleSubmit,
-        formState: { errors },
-      } = useForm<FormRegisterData>({
-        resolver: zodResolver(schemaRegister),
-      });
-    
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormRegisterData>({
+    resolver: zodResolver(schemaRegister),
+  });
+
   function onSubmit(data: FormRegisterData) {
-    if (data.password !== data.confirmPassword) {
-      return alert("As senhas não coincidem");
+    try {
+      createNewUser(data);
+    } catch (error) {
+      console.error("Erro ao criar usuário:", error);
     }
-    console.log(data);
   }
 
   return (
@@ -41,6 +47,13 @@ function FormRegister() {
     >
       <DivGroupInput title="Email" messageError={errors.email?.message}>
         <Input type="text" {...register("email")} />
+      </DivGroupInput>
+
+      <DivGroupInput
+        title="Nome de usuário"
+        messageError={errors.username?.message}
+      >
+        <Input type="text" {...register("username")} />
       </DivGroupInput>
 
       <DivGroupInput title="Senha" messageError={errors.password?.message}>
