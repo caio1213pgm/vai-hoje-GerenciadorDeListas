@@ -9,10 +9,15 @@ function User() {
 
   return (
     <div className="flex items-center text-white gap-2 pr-6">
-      <h1 className="text-white text-lg">
-        {user ? `Olá, ${user.displayName}!` : "Você não está logado"}
-      </h1>
-      {user ? <FaUser /> : <FaUserSlash />}
+      <Link
+        to={user ? "/perfil" : "/login"}
+        className="flex items-center gap-2"
+      >
+        <h1 className="text-white text-lg">
+          {user ? `Olá, ${user.displayName}!` : "Você não está logado"}
+        </h1>
+        {user ? <FaUser /> : <FaUserSlash />}
+      </Link>
     </div>
   );
 }
