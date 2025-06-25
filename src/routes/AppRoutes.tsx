@@ -11,12 +11,18 @@ export function AppRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
-        <Route path="/login" element={<Login />} />
+
         <Route path="/register" element={<Register />} />
         {user ? (
-          <Route path="/perfil" element={<Perfil />} />
+          <>
+            <Route path="/perfil" element={<Perfil />} />
+            <Route path="/login" element={<Perfil />} />
+          </>
         ) : (
-          <Route path="/perfil" element={<Login />} />
+          <>
+            <Route path="/perfil" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+          </>
         )}
       </Routes>
     </BrowserRouter>
