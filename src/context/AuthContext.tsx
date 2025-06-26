@@ -10,8 +10,7 @@ import React, { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../service/firebase";
 import type { FormRegisterData } from "../components/FormRegister";
 import type { FormLoginData } from "../components/FormLogin";
-import { db } from "../service/firebase";
-import { collection, addDoc } from "firebase/firestore";
+import addUserToFirestorage from "../hooks/useAddUserToFirestorage";
 
 type authProps = {
   user: User | undefined;
@@ -36,11 +35,11 @@ export default function AuthProvider({
 }) {
   const [user, setUser] = useState<User>();
   const [loading, setLoading] = useState<boolean>(false);
-
+  
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser(user);
+        return setUser(user);
       }
     });
   }, []);
@@ -57,6 +56,7 @@ export default function AuthProvider({
         .then((userCredential) => {
           const userl = userCredential.user;
           setUser(userl);
+          addUserToFirestorage(data, userl);
         })
         .catch((error) => {
           setLoading(false);
@@ -75,16 +75,6 @@ export default function AuthProvider({
       });
     } catch (error) {
       console.log(error);
-    }
-
-    try {
-      const docUserRef = await addDoc(collection(db, "users"), {
-        email: data.email,
-        username: data.username,
-      });
-      console.log(docUserRef.id)
-    } catch (error) {
-      console.error("Erro ao adicionar usuário ao Firestore:", error);
     }
     setLoading(false);
   }
