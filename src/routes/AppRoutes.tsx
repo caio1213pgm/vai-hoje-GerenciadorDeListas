@@ -4,6 +4,7 @@ import Login from "../pages/auth/Login";
 import Register from "../pages/auth/Register";
 import Perfil from "../pages/auth/Perfil";
 import { useAuth } from "../context/AuthContext";
+import Dashboard from "../pages/dashboard/Dashboard";
 
 export function AppRoutes() {
   const { user } = useAuth();
@@ -17,11 +18,13 @@ export function AppRoutes() {
           <>
             <Route path="/perfil" element={<Perfil />} />
             <Route path="/login" element={<Perfil />} />
+            <Route path="/dashboard" element={<Dashboard/>}/>
           </>
         ) : (
           <>
             <Route path="/perfil" element={<Login />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/dashboard" element={<Login />} />
           </>
         )}
       </Routes>
