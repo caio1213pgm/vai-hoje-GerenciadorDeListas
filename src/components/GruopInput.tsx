@@ -39,7 +39,7 @@ export function DivGroupInput({
 type errorProps = {
   message?: string;
 };
-function ErrosMessage({ message }: errorProps) {
+export function ErrosMessage({ message }: errorProps) {
   return (
     <span className="text-red-500 font-medium text-center">{message}</span>
   );
