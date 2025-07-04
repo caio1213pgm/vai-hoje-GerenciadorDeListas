@@ -5,6 +5,7 @@ import Register from "../pages/auth/Register";
 import Perfil from "../pages/auth/Perfil";
 import { useAuth } from "../context/AuthContext";
 import Dashboard from "../pages/dashboard/Dashboard";
+import NewPerson from "../pages/dashboard/NewPerson";
 
 export function AppRoutes() {
   const { user } = useAuth();
@@ -12,6 +13,7 @@ export function AppRoutes() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/lists/:idList" element={<NewPerson/>}/>
 
         {user ? (
           <>
