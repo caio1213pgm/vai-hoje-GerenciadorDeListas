@@ -21,9 +21,10 @@ function NavDashboard() {
             <div className="flex flex-col gap-6 ">
               <ButtonNav textButton="Criar Lista" value="1"/>
               
-              <ButtonNav textButton="Excluir Lista" value="2"/>
+              <ButtonNav textButton="Listas criadas" value="2"/>
 
-              <ButtonNav textButton="Listas criadas" value="3"/>
+              <ButtonNav textButton="Excluir Lista" value="3"/>
+
             </div>
           </nav>
         </div>
