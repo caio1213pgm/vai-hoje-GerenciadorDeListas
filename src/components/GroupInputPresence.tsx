@@ -18,8 +18,8 @@ type TextRadioProps = {
 };
 export function TextRadio({ text }: TextRadioProps) {
   const selectedClasses = {
-    Sim: "peer-checked:bg-green-500 peer-checked:border-green-600",
-    Não: "peer-checked:bg-red-500 peer-checked:border-red-600",
+    Sim: "peer-checked:bg-chart-2 peer-checked:border-chart-2",
+    Não: "peer-checked:bg-chart-5 peer-checked:border-chart-5",
   };
   return (
     <div
@@ -34,11 +34,13 @@ export function TextRadio({ text }: TextRadioProps) {
 type DivPresenceInputProps = {
     children: React.ReactNode;
     messageError?: string;
+    title: string
 }
-export function DivPresenceInput({children, messageError}: DivPresenceInputProps) {
+export function DivPresenceInput({children, messageError, title}: DivPresenceInputProps) {
     return(
         <div>
-            <div className="flex gap-5">
+          <h1 className="text-center text-xl">{title}</h1>
+            <div className="flex gap-5 justify-center">
                 {children}
             </div>
             <ErrosMessage message={messageError}/>
