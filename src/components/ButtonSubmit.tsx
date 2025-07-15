@@ -1,14 +1,17 @@
+import { Button } from "./ui/button";
+
 type ButtonSubmitProps = {
   text: string;
 }
 function ButtonSubmit({text}: ButtonSubmitProps) {
   return (
-    <button
+    <Button
       type="submit"
-      className="bg-gray-800 text-white text-xl px-7 py-1 rounded border-2 border-gray-600 hover:bg-gray-600 transition-colors cursor-pointer"
+      className="text-xl"
+      size="lg"
     >
       {text}
-    </button>
+    </Button>
   );
 }
 export default ButtonSubmit;

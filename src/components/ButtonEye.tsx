@@ -1,5 +1,6 @@
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa6";
+import { Button } from "./ui/button";
 
 type buttonEyeProps = {
   type: boolean;
@@ -11,9 +12,9 @@ function ButtonEye({ type, setType }: buttonEyeProps) {
     setType(!type);
   }
   return (
-    <button className="text-white text-xl" type="button" onClick={() => toggleType()}>
+    <Button variant="ghost" size="icon"  type="button" onClick={() => toggleType()}>
       {type ? <FaRegEyeSlash /> : <FaRegEye />}
-    </button>
+    </Button>
   );
 }
 export default ButtonEye;
