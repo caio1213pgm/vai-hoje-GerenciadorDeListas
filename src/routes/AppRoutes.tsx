@@ -6,32 +6,34 @@ import Perfil from "../pages/auth/Perfil";
 import { useAuth } from "../context/AuthContext";
 import Dashboard from "../pages/dashboard/Dashboard";
 import NewPerson from "../pages/dashboard/NewPerson";
+import PageCreateList from "@/pages/dashboard/PageCreateList";
 
 export function AppRoutes() {
-  const { user } = useAuth();
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/lists/:idList" element={<NewPerson/>}/>
+    const { user } = useAuth();
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<App />} />
+                <Route path="/lists/:idList" element={<NewPerson />} />
 
-        {user ? (
-          <>
-            <Route path="/perfil" element={<Perfil />} />
-            <Route path="/login" element={<Dashboard />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/register" element={<Dashboard/>}/>
-          </>
-        ) : (
-          <>
-            <Route path="/register" element={<Register />} />
-
-            <Route path="/perfil" element={<Login />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/dashboard" element={<Login />} />
-          </>
-        )}
-      </Routes>
-    </BrowserRouter>
-  );
+                {user ? (
+                    <>
+                        <Route path="/perfil" element={<Perfil />} />
+                        <Route path="/login" element={<Dashboard />} />
+                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/createList" element={<PageCreateList />} />
+                        <Route path="/register" element={<Dashboard />} />
+                    </>
+                ) : (
+                    <>
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/perfil" element={<Login />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/dashboard" element={<Login />} />
+                        <Route path="/createList" element={<Login />} />
+                    </>
+                )}
+            </Routes>
+        </BrowserRouter>
+    );
 }
