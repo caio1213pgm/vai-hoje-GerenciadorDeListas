@@ -2,21 +2,22 @@ import { Link } from "react-router";
 import "../App.css";
 import GroupCardsApresentation from "../components/GroupCardsApresentation";
 import Layout from "../layout/Layout";
+import { Button } from "@/components/ui/button";
 
 function App() {
-  return (
-    <Layout>
-      <GroupCardsApresentation />
+    return (
+        <Layout>
+            <GroupCardsApresentation />
 
-      <div className="flex justify-center">
-        <Link to="/dashboard">
-          <button className="bg-gray-700 px-8 py-4 text-xl text-white font-medium rounded-xl hover:scale-110 cursor-pointer duration-200">
-            Comece agora a criar sua lista
-          </button>
-        </Link>
-      </div>
-    </Layout>
-  );
+            <div className="flex justify-center">
+                <Link to="/dashboard">
+                    <Button className="text-xl py-8" size="lg">
+                        Comece agora a criar sua lista
+                    </Button>
+                </Link>
+            </div>
+        </Layout>
+    );
 }
 
 export default App;

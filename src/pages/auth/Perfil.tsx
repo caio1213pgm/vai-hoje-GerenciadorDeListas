@@ -1,11 +1,12 @@
-import Layout from "../../layout/Layout";
 import PerfilContent from "../../components/PerfilContent";
+import DashboardLayout from "@/layout/DashboardLayout";
+
 
 function Perfil() {
-  return (
-    <Layout>
-      <PerfilContent />
-    </Layout>
-  );
+    return (
+        <DashboardLayout>
+            <PerfilContent/>
+        </DashboardLayout>
+    );
 }
 export default Perfil;
