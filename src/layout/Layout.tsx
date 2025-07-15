@@ -8,7 +8,7 @@ function Layout({ children }: layoutProps) {
   return (
     <>
       <Header />
-        <div className="min-h-[calc(100vh-82px-82px)] bg-gray-800">
+        <div className="min-h-[calc(100vh-82px-82px)] py-10">
             {children}
         </div>
       <Footer />

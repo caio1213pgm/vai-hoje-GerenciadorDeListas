@@ -24,7 +24,7 @@ function User() {
 
 function Header() {
   return (
-    <header className="bg-gray-700 h-[82px]">
+    <header className="bg-gray-900 h-[82px]">
       <div className="flex items-center h-full justify-between">
         <h1 className="text-3xl font-medium text-white hover:scale-105 pl-6 cursor-pointer">
           <Link to="/">Vai Hoje?</Link>
