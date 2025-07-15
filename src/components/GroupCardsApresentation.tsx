@@ -2,7 +2,7 @@ import CardApresentation from "./CardApresentation";
 
 function GroupCardsApresentation() {
     return (
-        <div className="flex flex-wrap gap-5 justify-center h-full py-5 md:pt-15">
+        <div className="grid md:grid-cols-3 px-10 gap-5 justify-center h-full py-5 md:pt-15">
         <CardApresentation
           title="Qual o nosso propósito"
           description="O Vai Hoje? nasceu com a missão de simplificar a vida dos brasileiros, proporcionando uma experiência de organização de eventos única e inovadora."
