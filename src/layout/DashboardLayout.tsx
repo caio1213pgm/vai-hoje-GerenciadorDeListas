@@ -11,7 +11,7 @@ export default function DashboardLayout({
     return (
         <SidebarProvider>
             <AppSidebar />
-            <SidebarTrigger className="absolute md:hidden"/>
+            <SidebarTrigger className="md:hidden"/>
             <Toaster/>
             {children}
         </SidebarProvider>
