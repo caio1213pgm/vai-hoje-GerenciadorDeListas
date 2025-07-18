@@ -3,7 +3,7 @@ import { Card, CardContent, CardFooter, CardTitle } from "./ui/card";
 
 type DivFormsProps = {
     children: React.ReactNode;
-    title: string;
+    title?: string;
     link?: string;
     linkText?: string;
 };

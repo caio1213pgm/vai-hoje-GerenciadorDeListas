@@ -21,13 +21,13 @@ const data = {
             icon: <ListPlus />,
         },
         {
-            title: "Ver lista",
-            url: "#",
+            title: "Ver listas",
+            url: "/myLists",
             icon: <TextSearch />,
         },
         {
             title: "Excluir listas",
-            url: "#",
+            url: "/deleteList",
             icon: <Trash2 />,
         },
         {
