@@ -7,7 +7,7 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { DivGroupInput } from "../../components/GruopInput";
-import ButtonSubmit from "../../components/ButtonSubmit";
+import ButtonSubmit from "../../components/buttons/ButtonSubmit";
 import {
     DivPresenceInput,
     InputPresence,
@@ -16,6 +16,7 @@ import {
 } from "../../components/GroupInputPresence";
 import DivForms from "@/components/DivForms";
 import { Input } from "@/components/ui/input";
+import { toast, Toaster } from "sonner";
 
 const schema = z.object({
     name: z.string().min(3, { message: "Digite seu nome" }),
@@ -42,6 +43,7 @@ function NewPerson() {
         if (idList) {
             const listRef = doc(db, "lists", idList);
             const listSnap = await getDoc(listRef);
+            setLoading(false);
             if (listSnap.exists()) {
                 setLoading(false);
             } else {
@@ -73,7 +75,7 @@ function NewPerson() {
             (p) => p.email.toLowerCase() === data.email.toLowerCase()
         );
         if (emailExists) {
-            return alert("Email existente, tente outro email");
+            return toast("Email existente, tente outro email");
         }
 
         await updateDoc(listRef, {
@@ -83,7 +85,7 @@ function NewPerson() {
                 presence: true,
             }),
         });
-        console.log("presença confirmada");
+        toast("Presença confirmada com sucesso");
     }
 
     return (
@@ -91,11 +93,12 @@ function NewPerson() {
             {loading ? (
                 <CardLoading />
             ) : message ? (
-                <DivForms link="" title="" linkText="">
+                <DivForms>
                     <form
                         className="flex justify-center flex-col items-center gap-4"
                         onSubmit={handleSubmit(updateList)}
                     >
+                        <Toaster />
                         <DivGroupInput
                             title="Digite seu nome:"
                             messageError={errors.name?.message}
