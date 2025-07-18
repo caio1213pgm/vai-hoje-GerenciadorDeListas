@@ -1,6 +1,6 @@
 import { useState } from "react";
-import ButtonEye from "../ButtonEye";
-import ButtonSubmit from "../ButtonSubmit";
+import ButtonEye from "../buttons/ButtonEye";
+import ButtonSubmit from "../buttons/ButtonSubmit";
 import { DivGroupInput } from "../GruopInput";
 import z from "zod";
 import { useForm } from "react-hook-form";

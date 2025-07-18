@@ -3,14 +3,13 @@ import { useForm } from "react-hook-form";
 import z from "zod";
 import { DivGroupInput } from "../GruopInput";
 import { Input } from "../ui/input";
-import ButtonSubmit from "../ButtonSubmit";
+import ButtonSubmit from "../buttons/ButtonSubmit";
 import { createNewList } from "@/hooks/createNewList";
 import { nanoid } from "nanoid";
 import { useAuth } from "@/context/AuthContext";
 import { useState } from "react";
-import { Button } from "../ui/button";
-import { Copy } from "lucide-react";
 import { toast } from "sonner";
+import ButtonCopy from "../buttons/ButtonCopy";
 
 const schema = z.object({
     listName: z.string().min(3, { message: "Título é obrigatório" }),
@@ -20,7 +19,6 @@ const schema = z.object({
 type createListType = z.infer<typeof schema>;
 
 function FormCreateList() {
-
     const { user } = useAuth();
     const [copyLink, setCopyLink] = useState<string>("");
     const {
@@ -44,11 +42,10 @@ function FormCreateList() {
     }
 
     function onCopyLink() {
-        console.log("pegou");
         navigator.clipboard.writeText(copyLink);
         toast("Link copiado para a area de tranferência");
     }
-    
+
     return (
         <form
             className="flex justify-center flex-col items-center gap-4"
@@ -70,15 +67,7 @@ function FormCreateList() {
             <div className="flex gap-10 items-center">
                 <ButtonSubmit text="Criar lista" />
 
-                {copyLink && (
-                    <Button
-                        type="button"
-                        variant="outline"
-                        onClick={onCopyLink}
-                    >
-                        <Copy />
-                    </Button>
-                )}
+                {copyLink && <ButtonCopy action={onCopyLink} />}
             </div>
         </form>
     );

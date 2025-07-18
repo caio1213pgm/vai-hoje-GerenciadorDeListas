@@ -3,8 +3,8 @@ import { DivGroupInput } from "../GruopInput";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
-import ButtonEye from "../ButtonEye";
-import ButtonSubmit from "../ButtonSubmit";
+import ButtonEye from "../buttons/ButtonEye";
+import ButtonSubmit from "../buttons/ButtonSubmit";
 import { useAuth } from "../../context/AuthContext";
 import { Input } from "@/components/ui/input";
 
