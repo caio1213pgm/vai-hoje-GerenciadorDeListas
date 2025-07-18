@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router";
 import { useAuth } from "../context/AuthContext";
-import ButtonSignout from "./ButtonSignout";
+import ButtonSignout from "./buttons/ButtonSignout";
 import GroupSpanAccount from "./GroupSpanAccount";
 import { Card, CardContent, CardFooter, CardTitle } from "./ui/card";
 
