@@ -37,7 +37,7 @@ function FormCreateList() {
         const listDescription = data.ListDescription;
         const id_list = nanoid(15);
         createNewList({ user, id_list, listName, listDescription });
-        const urlCopy = `http://localhost:5173/lists/${id_list}`;
+        const urlCopy = `https://vai-hoje-gerenciador-de-listas.vercel.app/lists/${id_list}`;
         setCopyLink(urlCopy);
     }
 
