@@ -1,24 +1,9 @@
-import ButtonCopy from "@/components/buttons/ButtonCopy";
+import CardList from "@/components/CardList";
 import CardLoading from "@/components/CardLoading";
-import {
-    Table,
-    TableBody,
-    TableCaption,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
-} from "@/components/ui/table";
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { useAuth } from "@/context/AuthContext";
 import DashboardLayout from "@/layout/DashboardLayout";
 import { getListsByUid } from "@/lib/getListsByUid";
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
 
 export type person = {
     name: string;
@@ -56,82 +41,23 @@ function PageViewMyLists() {
 
     return (
         <DashboardLayout>
-            {myLists ? (
-                <Table>
-                    <TableHeader>
-                        <TableRow className="lg:text-xl text-center">
-                            <TableHead className="text-center">
-                                Nome da lista
-                            </TableHead>
-                            <TableHead className="text-center">
-                                Qntd de inscritos
-                            </TableHead>
-                            <TableHead className="text-center">
-                                Link de inscrição
-                            </TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                        {myLists.map((list) => (
-                            <TableRow key={list.id} className="">
-                                <TableCell className="text-center">
-                                    <Tooltip>
-                                        <TooltipTrigger>
-                                            <Link
-                                                to={`http://localhost:5173/myList/${list.id}`}
-                                                className="hover:underline "
-                                            >
-                                                {list.title}
-                                            </Link>
-                                        </TooltipTrigger>
-                                        <TooltipContent>
-                                            <p>
-                                                Clique para ver as incrições da
-                                                lista
-                                            </p>
-                                        </TooltipContent>
-                                    </Tooltip>
-                                </TableCell>
-                                <TableCell className="text-center">
-                                    {list.people_list.length}
-                                </TableCell>
-                                <TableCell className="lg:flex hidden items-center gap-2 justify-center">
-                                    <Link
-                                        className=" text-blue-400 hover:underline "
-                                        to={`http://localhost:5173/lists/${list.id}`}
-                                    >
-                                        {`http://localhost:5173/lists/${list.id}`}
-                                    </Link>
-
-                                    <ButtonCopy listId={list.id} />
-                                </TableCell>
-                                <TableCell className="lg:hidden gap-2">
-                                    <Link
-                                        className=" underline "
-                                        to={`http://localhost:5173/lists/${list.id}`}
-                                    >
-                                        Ir para inscrição
-                                    </Link>
-                                </TableCell>
-                            </TableRow>
-                        ))}
-                    </TableBody>
-                    <TableCaption>Minhas Lista</TableCaption>
-                </Table>
+            {myLists && myLists.length > 0 ? (
+                <div className="flex flex-wrap md:px-10 md:gap-8  items-center justify-center py-5">
+                    {myLists.map((list) => (
+                        <CardList
+                            title={list.title}
+                            description={list.description}
+                            id={list.id}
+                            sizeList={list.people_list.length}
+                        />
+                    ))}
+                </div>
             ) : (
-                <Table>
-                    <TableHeader>
-                        <TableRow>
-                            <TableHead>Nome da lista</TableHead>
-                            <TableHead>Qntd de inscritos</TableHead>
-                            <TableHead>Link de inscrição</TableHead>
-                        </TableRow>
-                    </TableHeader>
-                    <TableBody></TableBody>
-                    <TableCaption>
-                        Listas não encontradas ou você ainda não criou listas
-                    </TableCaption>
-                </Table>
+                <div className="m-auto">
+                    <h1 className="text-xl flex">
+                        Parece que você ainda não criou nenhuma lista...
+                    </h1>
+                </div>
             )}
         </DashboardLayout>
     );
