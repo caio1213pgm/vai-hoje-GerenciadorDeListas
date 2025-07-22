@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BookUser, ListPlus, TextSearch, Trash2, User } from "lucide-react";
+import { BookUser, ListPlus, TextSearch, User } from "lucide-react";
 
 import {
     Sidebar,
@@ -26,11 +26,6 @@ const data = {
             icon: <TextSearch />,
         },
         {
-            title: "Excluir listas",
-            url: "/deleteList",
-            icon: <Trash2 />,
-        },
-        {
             title: "Perfil",
             url: "/perfil",
             icon: <User />,
@@ -45,7 +40,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <SidebarMenu>
                     <SidebarMenuItem>
                         <SidebarMenuButton size="lg" asChild>
-                            <Link to="/">
+                            <Link to="/myLists">
                                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
                                     <BookUser className="size-4" />
                                 </div>
