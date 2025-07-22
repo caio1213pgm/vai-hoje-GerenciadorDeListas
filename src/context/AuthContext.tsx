@@ -8,8 +8,8 @@ import {
 } from "firebase/auth";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../service/firebase";
-import type { FormRegisterData } from "../components/FormRegister";
-import type { FormLoginData } from "../components/FormLogin";
+import type { FormRegisterData } from "../components/forms/FormRegister";
+import type { FormLoginData } from "../components/forms/FormLogin";
 import addUserToFirestorage from "../hooks/useAddUserToFirestorage";
 
 type authProps = {

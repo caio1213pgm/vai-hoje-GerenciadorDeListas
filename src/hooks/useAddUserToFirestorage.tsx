@@ -1,5 +1,5 @@
 import type { User } from "firebase/auth";
-import type { FormRegisterData } from "../components/FormRegister";
+import type { FormRegisterData } from "../components/forms/FormRegister";
 import { db } from "../service/firebase";
 import { doc, setDoc } from "firebase/firestore";
 

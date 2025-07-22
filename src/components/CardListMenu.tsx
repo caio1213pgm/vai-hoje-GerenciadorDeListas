@@ -7,7 +7,7 @@ import {
 } from "./ui/dropdown-menu";
 import ButtonCopy from "./buttons/ButtonCopy";
 import { EllipsisVertical } from "lucide-react";
-import DeleteListDialog from "./deleteListDialog";
+import DeleteListDialog from "./DeleteListDialog";
 
 function CardListMenu({ id }: { id: string }) {
     return (
