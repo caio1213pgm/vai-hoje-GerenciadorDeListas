@@ -18,11 +18,11 @@ type CardListProps = {
 function CardList({ title, description, id, sizeList }: CardListProps) {
     const navigate = useNavigate();
     return (
-        <Card
-            className="hover:scale-105 duration-150"
-            onClick={() => navigate(`/myList/${id}`)}
-        >
-            <CardContent className="cursor-pointer hover:scale-105 duration-150">
+        <Card className="hover:scale-105 duration-150">
+            <CardContent
+                className="cursor-pointer hover:scale-105 duration-150"
+                onClick={() => navigate(`/myList/${id}`)}
+            >
                 <div className="bg-gradient-to-r from-gray-700 to-gray-800 bg-repeat-x w-70 h-35 rounded"></div>
             </CardContent>
             <CardHeader>
