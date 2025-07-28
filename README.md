@@ -1,54 +1,76 @@
-# React + TypeScript + Vite
+# ✅ Vai Hoje – Gerenciador de Listas
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Vai Hoje** é uma aplicação web desenvolvida com React + TypeScript para criar, compartilhar e acompanhar listas de eventos e confirmações de presença. Ela permite que usuários criem uma lista personalizada, compartilhem o link com outras pessoas e vejam as respostas em tempo real.
 
-Currently, two official plugins are available:
+[🔗 Acesse o site](https://vai-hoje-gerenciador-de-listas.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Funcionalidades
 
-## Expanding the ESLint configuration
+-   Criar nova lista personalizada com título e descrição
+-   Compartilhar a lista via link único
+-   Participantes acessam e confirmam sua presença na lista sem precisar estar cadastrados
+-   Visualização em tempo real das respostas
+-   Integração com banco de dados
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 📸 Demonstração
+
+![foto que mostra a tela inicial da aplicação](src/public/image.png)
+
+> _tela inicial da aplicação_
+
+![foto que mostra a tela de login da aplicação](src/public/image-1.png)
+
+> _tela de login_
+
+![foto que mostra o dashboard da aplicação](src/public/image-2.png)
+
+> _dashboard_
+
+![foto que mostra a página de pessoas inscritas na lista](src/public/image-3.png)
+
+> _pessoas inscritas na lista_
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+-   [React](https://reactjs.org/)
+-   [TypeScript](https://www.typescriptlang.org/)
+-   [Vite](https://vitejs.dev/)
+-   [Firebase](https://firebase.google.com/)
+-   [Tailwind CSS](https://tailwindcss.com/)
+-   [React Router](https://reactrouter.com/)
+-   [Shadcn-UI](https://ui.shadcn.com/)
+-   [Vercel](https://vercel.com/)
+
+---
+
+## 📦 Instalação Local
+
+```bash
+# Clone o repositório
+git clone https://github.com/caio1213pgm/vai-hoje-GerenciadorDeListas.git
+
+# Acesse o diretório
+cd vai-hoje-GerenciadorDeListas
+
+# Instale as dependências
+npm install
+
+# Execute o projeto localmente
+npm run dev
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🤝 Contribuindo
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Contribuições são bem-vindas! Sinta-se livre para abrir issues ou pull requests com melhorias, correções ou sugestões.
+
+## 👤 Autor
+
+Desenvolvido por [Caio1213pgm](https://github.com/caio1213pgm)
+
