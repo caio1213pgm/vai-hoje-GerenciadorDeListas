@@ -42,7 +42,7 @@ function PageViewMyLists() {
     return (
         <DashboardLayout>
             {myLists && myLists.length > 0 ? (
-                <div className="flex flex-wrap md:px-10 md:gap-8  items-center justify-center py-5">
+                <div className="flex flex-wrap md:px-10 md:gap-8 gap-3 items-center justify-center py-5">
                     {myLists.map((list) => (
                         <CardList
                             title={list.title}

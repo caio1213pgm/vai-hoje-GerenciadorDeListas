@@ -17,7 +17,7 @@ function DivForms({ children, title, link, linkText }: DivFormsProps) {
             <CardFooter>
                 <Link
                     to={link ? link : ""}
-                    className="text-blue-400 font-medium m-auto"
+                    className="text-blue-400 text-sm md:text-base font-medium m-auto"
                 >
                     {linkText}
                 </Link>

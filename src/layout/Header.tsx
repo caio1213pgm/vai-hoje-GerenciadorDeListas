@@ -14,7 +14,7 @@ function User() {
         className="flex items-center gap-2"
       >
         <h1 className="text-white text-lg">
-          {user ? `Olá, ${user.displayName}!` : "Você não está logado"}
+          {user ? `${user.displayName}!` : "Você não está logado"}
         </h1>
         {user ? <FaUser /> : <FaUserSlash />}
       </Link>
@@ -26,7 +26,7 @@ function Header() {
   return (
     <header className="bg-gray-900 h-[82px]">
       <div className="flex items-center h-full justify-between">
-        <h1 className="text-3xl font-medium text-white hover:scale-105 pl-6 cursor-pointer">
+        <h1 className="md:text-3xl text-xl font-medium text-white hover:scale-105 pl-6 cursor-pointer">
           <Link to="/">Vai Hoje?</Link>
         </h1>
         <div>

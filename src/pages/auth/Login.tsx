@@ -17,7 +17,7 @@ function Login() {
             ) : (
                 <Card className="m-auto md:w-[600px]">
                     <CardContent>
-                        <h1 className="text-center text-xl font-medium">
+                        <h1 className="text-center md:text-xl font-medium">
                             Entre com seu email e senha cadastrados!
                         </h1>
                         <DivForms
