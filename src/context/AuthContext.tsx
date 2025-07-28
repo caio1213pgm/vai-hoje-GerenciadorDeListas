@@ -1,9 +1,12 @@
 import {
     createUserWithEmailAndPassword,
+    GoogleAuthProvider,
     onAuthStateChanged,
     signInWithEmailAndPassword,
+    signInWithPopup,
     signOut,
     updateProfile,
+    GithubAuthProvider,
     type User,
 } from "firebase/auth";
 import React, { createContext, useContext, useEffect, useState } from "react";
@@ -19,6 +22,8 @@ type authProps = {
     createNewUser: (data: FormRegisterData) => void;
     signInUser: (data: FormLoginData) => void;
     signOutUser: () => void;
+    singInUserFromGoogle: () => void;
+    singInUserFromGitHub: () => void;
 };
 
 const AuthContext = createContext<authProps>({
@@ -27,6 +32,8 @@ const AuthContext = createContext<authProps>({
     createNewUser: () => [],
     signInUser: () => [],
     signOutUser: () => [],
+    singInUserFromGoogle: () => [],
+    singInUserFromGitHub: () => [],
 });
 
 export default function AuthProvider({
@@ -36,6 +43,8 @@ export default function AuthProvider({
 }) {
     const [user, setUser] = useState<User>();
     const [loading, setLoading] = useState<boolean>(false);
+    const googleProvier = new GoogleAuthProvider();
+    const gitHubProvider = new GithubAuthProvider();
 
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
@@ -84,6 +93,53 @@ export default function AuthProvider({
         setLoading(false);
     }
 
+    async function singInUserFromGoogle() {
+        await signInWithPopup(auth, googleProvier)
+            .then((result) => {
+                const userl = result.user;
+
+                setUser(userl);
+
+                const data: FormRegisterData = {
+                    email: userl.email ?? "",
+                    username: userl.displayName ?? "",
+                    password: "",
+                    confirmPassword: "",
+                };
+                addUserToFirestorage(data, userl);
+            })
+            .catch((error) => {
+                console.log(error);
+                toast("Erro ao fazer login com Google. Tente novamente.");
+            });
+    }
+
+    async function singInUserFromGitHub() {
+        await signInWithPopup(auth, gitHubProvider)
+            .then((result) => {
+                const userl = result.user;
+                setUser(userl);
+                toast("Login realizado com sucesso!");
+                const data: FormRegisterData = {
+                    email: userl.email ?? "",
+                    username: userl.displayName ?? "",
+                    password: "",
+                    confirmPassword: "",
+                };
+                addUserToFirestorage(data, userl);
+            })
+            .catch((error) => {
+                if (
+                    error.code ===
+                    "auth/account-exists-with-different-credential"
+                ) {
+                    return toast("Já existe uma conta com este email");
+                }
+                console.log(error);
+                toast("Erro ao fazer login com GitHub. Tente novamente.");
+            });
+    }
+
     async function signInUser(data: FormLoginData) {
         try {
             setLoading(true);
@@ -127,7 +183,15 @@ export default function AuthProvider({
 
     return (
         <AuthContext.Provider
-            value={{ user, loading, createNewUser, signInUser, signOutUser }}
+            value={{
+                user,
+                loading,
+                createNewUser,
+                signInUser,
+                signOutUser,
+                singInUserFromGoogle,
+                singInUserFromGitHub,
+            }}
         >
             {children}
         </AuthContext.Provider>

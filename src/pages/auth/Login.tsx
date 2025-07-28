@@ -4,9 +4,12 @@ import DivForms from "../../components/DivForms";
 import { useAuth } from "../../context/AuthContext";
 import CardLoading from "../../components/CardLoading";
 import { Card, CardContent } from "@/components/ui/card";
+import { FaGithub, FaGoogle } from "react-icons/fa";
+import ButtonIcons from "@/components/buttons/ButtonIcons";
 
 function Login() {
-    const { loading } = useAuth();
+    const { loading, singInUserFromGoogle, singInUserFromGitHub } = useAuth();
+
     return (
         <Layout>
             {loading ? (
@@ -23,6 +26,14 @@ function Login() {
                         >
                             <FormLogin />
                         </DivForms>
+                        <div className="text-center mt-2 p-2 flex justify-center gap-2 border rounded-xl">
+                            <ButtonIcons action={singInUserFromGoogle}>
+                                <FaGoogle />
+                            </ButtonIcons>
+                            <ButtonIcons action={singInUserFromGitHub}>
+                                <FaGithub />
+                            </ButtonIcons>
+                        </div>
                     </CardContent>
                 </Card>
             )}
