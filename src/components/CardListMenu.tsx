@@ -1,3 +1,6 @@
+import { exportToExcel } from "@/lib/excel";
+import { getPersonsByIdList } from "@/lib/getPersonsByIdList";
+import type { person } from "@/pages/dashboard/PageViewMyLists";
 import { onCopyLink } from "@/utils/copyLink";
 import { Copy, EllipsisVertical, FileDown, Trash2 } from "lucide-react";
 import { useState } from "react";
@@ -10,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 
-function CardListMenu({ id }: { id: string }) {
+function CardListMenu({ id, listaName }: { id: string; listaName: string }) {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
   const itensMenu: {
     label: string;
@@ -34,8 +37,24 @@ function CardListMenu({ id }: { id: string }) {
       },
       separator: true,
     },
-    { icon: <FileDown />, label: "Exportar .csv", onClick: () => {} },
+    {
+      icon: <FileDown />,
+      label: "Exportar para excel",
+      onClick: async () => {
+        const users = await getPersonsByIdList(id);
+        const dataExecel =
+          users?.map((item: person) => {
+            return {
+              Nome: item.name,
+              Email: item.email,
+              Presença: item.presence ? "Sim" : "Não",
+            };
+          }) || [];
+        exportToExcel(dataExecel, listaName);
+      },
+    },
   ];
+
   return (
     <>
       <DeleteListDialog
